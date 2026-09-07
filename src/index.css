@@ -1,0 +1,117 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Newsreader", ui-serif, Georgia, "Times New Roman", serif;
+
+  /* Editorial paper-and-ink palette. School colours are never overridden. */
+  --color-paper: #F3F0E9;
+  --color-card: #FFFFFF;
+  --color-ink: #14161A;
+  --color-muted: #575D66;
+  --color-faint: #8B9099;
+  --color-line: #E3DED4;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--color-paper);
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Serif display headings — the signature of the whole design */
+h1,
+h2,
+.font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.015em;
+}
+
+h1 {
+  font-weight: 600;
+}
+
+h2 {
+  font-weight: 600;
+}
+
+/* Hide scrollbars on the horizontal nav strip */
+.scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+/* A single hairline rule used to structure sections */
+.rule {
+  height: 1px;
+  background: var(--color-line);
+}
+
+/* ---- Leaflet, light ---- */
+.leaflet-container {
+  background: #ede9e1;
+  font-family: var(--font-sans);
+}
+.leaflet-top,
+.leaflet-bottom {
+  z-index: 400;
+}
+.leaflet-tooltip {
+  background: #ffffff;
+  border: 1px solid var(--color-line);
+  color: var(--color-ink);
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(20, 22, 26, 0.12);
+  padding: 7px 10px;
+}
+.leaflet-tooltip-top::before {
+  border-top-color: var(--color-line);
+}
+.leaflet-bar a,
+.leaflet-bar a:hover {
+  background: #ffffff;
+  color: var(--color-ink);
+  border-bottom-color: var(--color-line);
+}
+.leaflet-control-attribution {
+  background: rgba(255, 255, 255, 0.85) !important;
+  color: var(--color-faint) !important;
+  font-size: 10px;
+}
+.leaflet-control-attribution a {
+  color: var(--color-muted) !important;
+}
+.leaflet-interactive:focus {
+  outline: none;
+}
+
+/* Page transition */
+main {
+  animation: fade-up 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  main {
+    animation: none;
+  }
+}
